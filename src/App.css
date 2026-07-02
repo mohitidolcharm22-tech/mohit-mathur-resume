@@ -185,6 +185,20 @@
   gap: 18px;
 }
 
+.nav-toggle {
+  display: none;
+  border: 1px solid rgba(26, 59, 54, 0.25);
+  background: rgba(255, 255, 255, 0.92);
+  color: #1a3f39;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
 .site-nav nav a {
   text-decoration: none;
   color: #25433e;
@@ -887,9 +901,36 @@ h2 {
   .nav-inner {
     height: auto;
     padding: 12px 0;
-    align-items: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .brand {
+    flex: 1;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav nav {
+    display: none;
+    order: 3;
+    width: 100%;
     flex-direction: column;
     gap: 8px;
+    padding: 10px 0 2px;
+    border-top: 1px solid rgba(20, 35, 34, 0.12);
+  }
+
+  .site-nav nav.open {
+    display: flex;
+  }
+
+  .site-nav nav a {
+    display: block;
+    padding: 8px 0;
   }
 
   .hero-grid,

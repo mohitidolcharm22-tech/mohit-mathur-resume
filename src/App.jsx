@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   FaArrowRight,
+  FaBars,
   FaDocker,
   FaGithub,
   FaLinkedin,
@@ -9,6 +10,7 @@ import {
   FaReact,
   FaServer,
   FaTasks,
+  FaTimes,
 } from 'react-icons/fa'
 import {
   SiCypress,
@@ -529,6 +531,7 @@ function ChatBot() {
 function App() {
   const [activeId, setActiveId] = useState('brac')
   const [speakMode, setSpeakMode] = useState(false)
+  const [isNavOpen, setIsNavOpen] = useState(false)
   const [mascotProgress, setMascotProgress] = useState(0)
   const [currentSection, setCurrentSection] = useState('top')
   const lastSpokenRef = useRef('')
@@ -661,6 +664,17 @@ function App() {
   }, [speakMode])
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 920) {
+        setIsNavOpen(false)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
     if (!speakMode || !window.speechSynthesis) {
       return
     }
@@ -690,17 +704,41 @@ function App() {
 
       <header className="site-nav">
         <div className="content-wrap nav-inner">
-          <a href="#top" className="brand">
+          <a href="#top" className="brand" onClick={() => setIsNavOpen(false)}>
             Home
           </a>
-          <nav>
-            <a href="#journey">Journey</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#education">Education</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#awards">Awards</a>
-            <a href="#connect">Contact</a>
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded={isNavOpen}
+            aria-controls="site-nav-links"
+            onClick={() => setIsNavOpen((prev) => !prev)}
+          >
+            {isNavOpen ? <FaTimes aria-hidden="true" /> : <FaBars aria-hidden="true" />}
+          </button>
+          <nav id="site-nav-links" className={isNavOpen ? 'open' : ''}>
+            <a href="#journey" onClick={() => setIsNavOpen(false)}>
+              Journey
+            </a>
+            <a href="#projects" onClick={() => setIsNavOpen(false)}>
+              Projects
+            </a>
+            <a href="#skills" onClick={() => setIsNavOpen(false)}>
+              Skills
+            </a>
+            <a href="#education" onClick={() => setIsNavOpen(false)}>
+              Education
+            </a>
+            <a href="#achievements" onClick={() => setIsNavOpen(false)}>
+              Achievements
+            </a>
+            <a href="#awards" onClick={() => setIsNavOpen(false)}>
+              Awards
+            </a>
+            <a href="#connect" onClick={() => setIsNavOpen(false)}>
+              Contact
+            </a>
           </nav>
         </div>
       </header>
