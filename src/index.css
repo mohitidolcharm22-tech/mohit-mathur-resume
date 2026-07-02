@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap');
+
+:root {
+  --bg: #efece4;
+  --card: #fffef9;
+  --ink: #142322;
+  --ink-soft: #315953;
+  --line: rgba(23, 42, 38, 0.18);
+  --accent-1: #1caa96;
+  --accent-2: #f48a44;
+  --sans: 'Manrope', sans-serif;
+  --heading: 'Syne', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 20%, rgba(28, 170, 150, 0.2), transparent 35%),
+    radial-gradient(circle at 85% 5%, rgba(244, 138, 68, 0.17), transparent 42%),
+    linear-gradient(170deg, #f1f0ea, #e8e2d7);
+  background-attachment: fixed;
+  line-height: 1.4;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--heading);
+  color: var(--ink);
+}
